@@ -3,6 +3,47 @@
 require_once('../setting/config.php');
 require_once('../setting/functions.php');
 
+session_start();
+
+if (!empty($_SESSION['me'])) {
+  header('Location: ' . SITE_URL);
+  exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+  setToken();
+} else {
+  checkToken();
+
+  // 変数の宣言
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  $dbh = connectDb();
+
+  $error = array();
+
+  // エラーチェック
+  if ($email == '') {
+    $error['email'] = 'メールアドレスを入力してください。';
+  } elseif ($password == '') {
+    $error['password'] = 'パスワードを入力してください。';
+  } elseif (!emailExists($email, $dbh)) {
+    $error['email'] = 'このメールアドレスは登録されていません。';
+  } elseif (!$me = getUser($email, $password, $dbh)) {
+    $error['password'] = 'メールアドレスもしくは、パスワードが正しくありません。';
+  }
+
+  if (empty($error)) {
+    // セッションハイジャック対策
+    session_regenerate_id(true);
+    $_SESSION['me'] = $me;
+    header('Location: ' . SITE_URL);
+    exit;
+  }
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +82,24 @@ require_once('../setting/functions.php');
   </head>
   <body class="hold-transition login-page">
 
+    <?php if(!empty($error['email'])) : ?>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+        <?php echo h($error['email']); ?>
+      </div>
+    <?php elseif(!empty($error['password'])) : ?>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+        <?php echo h($error['password']); ?>
+      </div>
+    <?php elseif(!empty($error['token'])) : ?>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+        <?php echo h($error['token']); ?>
+      </div>
+    <?php endif; ?>
+
+
     <div class="login-box">
       <div class="login-logo">
         <a href="<?php echo h(SITE_URL); ?>"><b>求人管理</b>システム</a>
@@ -51,7 +110,7 @@ require_once('../setting/functions.php');
 
         <form action="" method="post">
           <div class="form-group has-feedback">
-            <input type="email" name="email" placeholder="メールアドレス" class="form-control">
+            <input type="email" name="email" placeholder="メールアドレス" class="form-control" value="<?php echo h($email); ?>">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
@@ -67,6 +126,7 @@ require_once('../setting/functions.php');
               </div>
             </div>
             <div class="col-xs-4">
+              <input type="hidden" name="token" value="<?php echo h($_SESSION['token']); ?>">
               <button type="submit" class="btn btn-primary btn-block btn-flat">ログイン</button>
             </div>
           </div>
