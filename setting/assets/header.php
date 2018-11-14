@@ -217,12 +217,13 @@
         <!-- ▼▼ ユーザー ▼▼ -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs"><?php echo h($me['FirstName'] . " " . $me['LastName']); ?></span>
+            <span class="hidden-xs"><i class="fa fa-user"></i> <?php echo h($me['FirstName'] . " " . $me['LastName']); ?></span>
           </a>
           <ul class="dropdown-menu">
             <li class="user-header">
               <p>
-                <?php echo h($me['FirstName'] . " " . $me['LastName']); ?> <?php echo h($me['email']); ?>
+                <i class="fa fa-user"></i> <?php echo h($me['FirstName'] . " " . $me['LastName']); ?><br />
+                <i class="fa fa-envelope"></i> <?php echo h($me['email']); ?>
                 <?php
 
                   $today = date("Ymd");
