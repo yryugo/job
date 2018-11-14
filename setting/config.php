@@ -6,6 +6,8 @@ define('DB_PASSWORD', 'p@ssw0rd');
 
 define('PASSWORD_KEY', 'p@ssw0rd');
 
+define('PER_PAGE', 5);
+
 // URL判定
 $url  = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
 $domain = $_SERVER["HTTP_HOST"];
