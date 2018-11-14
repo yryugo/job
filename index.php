@@ -3,14 +3,10 @@
   require_once('setting/config.php');
   require_once('setting/functions.php');
 
-  session_start();
-
   if (empty($_SESSION['me'])) {
     header('Location: ' . SITE_URL . 'login/');
     exit;
   }
-
-  $me = $_SESSION['me'];
 
 ?>
 <!DOCTYPE html>

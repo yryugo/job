@@ -21,3 +21,7 @@ if ($host == "http://localhost:8888") {
 } elseif($host == "https://job.techrun.net") {
   define('SITE_URL', 'https://job.techrun.net/');
 }
+
+session_start();
+
+$me = $_SESSION['me'];
