@@ -15,7 +15,12 @@
 
   $dbh = connectDb();
 
-  $page = (int)$_GET['page'];
+  if (preg_match('/^[1-9][0-9]*$/', $_GET['page'])) {
+      $page = (int)$_GET['page'];
+  } else {
+      $page = 1;
+  }
+  define('PER_PAGE', 5);
 
   $offset = PER_PAGE * ($page - 1);
 ?>
