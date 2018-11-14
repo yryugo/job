@@ -7,6 +7,7 @@
           <i class="fa fa-dashboard"></i> <span>トップページ</span>
         </a>
       </li>
+      <?php if ($me['admin'] == 2) : ?>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-address-book"></i> <span>媒体</span>
@@ -15,10 +16,11 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class=""><a href="#"><i class="fa fa-circle-o"></i>媒体一覧</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>媒体登録</a></li>
+          <li class=""><a href="<?php echo h(SITE_URL . 'media/'); ?>"><i class="fa fa-circle-o"></i>媒体一覧</a></li>
+          <li><a href="<?php echo h(SITE_URL . 'media/add/'); ?>"><i class="fa fa-circle-o"></i>媒体登録</a></li>
         </ul>
       </li>
+      <?php endif; ?>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-building-o"></i> <span>企業</span>
