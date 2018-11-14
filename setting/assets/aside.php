@@ -13,6 +13,7 @@
           <i class="fa fa-address-book"></i> <span>媒体</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
+            <small class="label pull-right bg-red">new</small>
           </span>
         </a>
         <ul class="treeview-menu">
@@ -74,7 +75,6 @@
           <i class="fa fa-cog"></i> <span>各種設定</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
-            <small class="label pull-right bg-red">new</small>
           </span>
         </a>
         <ul class="treeview-menu">

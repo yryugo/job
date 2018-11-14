@@ -36,22 +36,28 @@
 
         <section class="content">
           <div class="row">
-            <!-- ▼▼ 数値パネル1（媒体数） ▼▼ -->
-            <!--
-            <div class="col-lg-3 col-xs-6">
-              <div class="small-box bg-aqua">
-                <div class="inner">
-                  <h3>150</h3>
-                  <p>New Orders</p>
+            <?php if ($me['admin'] == 2) : ?>
+              <!-- ▼▼ 媒体数 ▼▼ -->
+              <?php
+                $sql = "SELECT COUNT(*) FROM media";
+                $dbh = connectDb();
+                $stmt = $dbh->query($sql);
+                $medias = $stmt->fetchColumn();
+              ?>
+              <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3><?php echo h($medias); ?></h3>
+                    <p>媒体</p>
+                  </div>
+                  <div class="icon">
+                    <i class="fa fa-address-book"></i>
+                  </div>
+                  <a href="<?php echo h(SITE_URL . 'media/'); ?>" class="small-box-footer">もっと見る <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
-            </div>
-            -->
-            <!-- ▲▲ 数値パネル1 ▲▲ -->
+              <!-- ▲▲ 媒体数 ▲▲ -->
+            <?php endif; ?>
 
             <!-- ▼▼ 数値パネル2 ▼▼ -->
             <!--
