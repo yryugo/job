@@ -32,7 +32,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="<?php echo h(SITE_URL . 'company/add/'); ?>"><i class="fa fa-circle-o"></i>企業一覧</a></li>
+            <li class=""><a href="<?php echo h(SITE_URL . 'company/'); ?>"><i class="fa fa-circle-o"></i>企業一覧</a></li>
             <li><a href="<?php echo h(SITE_URL . 'company/add/'); ?>"><i class="fa fa-circle-o"></i>企業登録</a></li>
           </ul>
         </li>

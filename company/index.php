@@ -114,7 +114,7 @@
                           ?>
                         </td>
                         <td>
-                          <a href="<?php echo h(SITE_URL . 'company/show/?id=' . $comapny['id']); ?>" class="btn btn-default"><i class="fa fa-search"></i></a>
+                          <a href="<?php echo h(SITE_URL . 'company/show/?id=' . $company['id']); ?>" class="btn btn-default"><i class="fa fa-search"></i></a>
                           <a href="<?php echo h(SITE_URL . 'company/edit/?id=' . $company['id']); ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                           <a href="<?php echo h(SITE_URL . 'company/delete/?id=' . $company['id']); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                         </td>
