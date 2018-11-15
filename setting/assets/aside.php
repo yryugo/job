@@ -13,7 +13,6 @@
           <i class="fa fa-address-book"></i> <span>媒体</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
-            <small class="label pull-right bg-red">new</small>
           </span>
         </a>
         <ul class="treeview-menu">
@@ -22,18 +21,23 @@
         </ul>
       </li>
       <?php endif; ?>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-building-o"></i> <span>企業</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class=""><a href="#"><i class="fa fa-circle-o"></i>企業一覧</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i>企業登録</a></li>
-        </ul>
-      </li>
+
+      <?php if ($me['admin'] == 2) : ?>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-building-o"></i> <span>企業</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+              <small class="label pull-right bg-red">new</small>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class=""><a href="<?php echo h(SITE_URL . 'company/add/'); ?>"><i class="fa fa-circle-o"></i>企業一覧</a></li>
+            <li><a href="<?php echo h(SITE_URL . 'company/add/'); ?>"><i class="fa fa-circle-o"></i>企業登録</a></li>
+          </ul>
+        </li>
+      <?php endif; ?>
+
       <li class="treeview">
         <a href="#">
           <i class="fa fa-files-o"></i> <span>求人</span>
