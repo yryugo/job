@@ -59,22 +59,28 @@
               <!-- ▲▲ 媒体数 ▲▲ -->
             <?php endif; ?>
 
-            <!-- ▼▼ 数値パネル2 ▼▼ -->
-            <!--
-            <div class="col-lg-3 col-xs-6">
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
-                  <p>Bounce Rate</p>
+            <!-- ▼▼ 企業数▼▼ -->
+            <?php if ($me['admin'] == 2) : ?>
+              <?php
+                $sql = "SELECT COUNT(*) FROM company";
+                $dbh = connectDb();
+                $stmt = $dbh->query($sql);
+                $companys = $stmt->fetchColumn();
+              ?>
+              <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-green">
+                  <div class="inner">
+                    <h3><?php echo h($companys); ?></h3>
+                    <p>企業</p>
+                  </div>
+                  <div class="icon">
+                    <i class="fa fa-building"></i>
+                  </div>
+                  <a href="<?php echo h(SITE_URL . 'company/'); ?>" class="small-box-footer">もっと見る <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
-            </div>
-            -->
-            <!-- ▲▲ 数値パネル2 ▲▲ -->
+            <?php endif; ?>
+            <!-- ▲▲ 企業数 ▲▲ -->
 
             <!-- ▼▼ 数値パネル3 ▼▼ -->
             <!--
