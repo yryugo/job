@@ -88,7 +88,7 @@
                   <dt>売上高</dt>
                   <dd><?php echo h($companys['AmountOfSales']); ?></dd>
                   <dt>事業内容</dt>
-                  <dd><?php echo h(nl2br($companys['BusinessContents'])); ?></dd>
+                  <dd><?php echo nl2br($companys['BusinessContents']); ?></dd>
                   <dt>登録</dt>
                   <dd>
                     <?php
